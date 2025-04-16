@@ -6,15 +6,16 @@ namespace Chatbot
     {
        public static void Main(string[] args)
         {
-            Console.Title = "Cybersecurity Awareness Chatbot";
-
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            string audioPath = @"C:\Users\lab_services_student\Downloads\greeting.wav";
+            SecurityChatbot botAudio = new SecurityChatbot(audioPath);
+            botAudio.Greet();
             Console.Write("Please enter your name: ");
             string username = Console.ReadLine();
-
-            string audioPath = @"C:\Users\lab_services_student\Downloads\greeting.wav";
+            Console.Title = "Cybersecurity Awareness Chatbot";
 
             SecurityChatbot bot = new SecurityChatbot(username, audioPath);
-            bot.Greet();
+
             bot.StartChat();
             
         }

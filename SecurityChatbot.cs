@@ -13,6 +13,17 @@ namespace Chatbot
             _running = true;
         }
 
+        public SecurityChatbot(string audioPath)
+            : base(audioPath)
+        {
+            _running = true;
+        }
+
+        public void SetUserName()
+        {
+
+        }
+
         public override void Greet()
         {
             try
@@ -26,13 +37,14 @@ namespace Chatbot
             }
 
             ArtDisplay.ShowAsciiTitle();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"👋 Welcome {Username}! I’m your Cybersecurity Awareness Bot.\n");
-            Console.ResetColor();
+            
         }
 
         public override void StartChat()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"👋 Welcome {Username}! I’m your Cybersecurity Awareness Bot.\n");
+            Console.ResetColor();
             while (_running)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
