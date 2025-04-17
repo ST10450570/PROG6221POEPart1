@@ -1,27 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Media;
+using System.Threading;
 
 namespace Chatbot
 {
     public class SecurityChatbot : ChatbotBase, IResponder
     {
         private bool _running;
+        private Dictionary<string, string> _responses;
 
-        public SecurityChatbot(string username, string audioPath)
-            : base(username, audioPath)
+        public SecurityChatbot(string username, string audioPath) : base(username, audioPath)
         {
             _running = true;
+            InitializeResponses();
         }
 
-        public SecurityChatbot(string audioPath)
-            : base(audioPath)
+        public SecurityChatbot(string audioPath) : base(audioPath)
         {
             _running = true;
+            InitializeResponses();
         }
 
-        public void SetUserName()
+        private void InitializeResponses()
         {
-
+            _responses = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "how are you", "🤖 I'm fully patched and secured, thanks for asking!" },
+                { "purpose", "🔐 I'm your Cybersecurity Awareness Bot. I help you stay safe online by answering questions about cybersecurity." },
+                { "what can i ask you", "🧠 You can ask me about phishing, malware, passwords, browsing safely, firewalls, antivirus, social engineering, VPNs, and more!" },
+                { "phishing", "🎣 Phishing is when attackers trick you into revealing sensitive information. Always check URLs and never click unknown links." },
+                { "malware", "🦠 Malware is malicious software that can damage your system or steal data. Use trusted antivirus programs!" },
+                { "password", "🔑 Use long, unique passwords for each account. Consider a password manager and enable two-factor authentication." },
+                { "browsing", "🌐 Only visit HTTPS sites, block pop-ups, and clear your cache regularly." },
+                { "vpn", "🔒 A VPN hides your IP address and encrypts your data, especially useful on public Wi-Fi." },
+                { "firewall", "🧱 A firewall acts as a barrier between your computer and threats from the internet." },
+                { "social engineering", "🎭 It's when attackers manipulate people into giving up confidential information. Always verify before sharing info!" },
+                { "antivirus", "🛡️ Keep your antivirus software up-to-date to catch the latest threats." },
+                { "ransomware", "💰 Ransomware locks your files and demands payment. Backup your data regularly!" },
+                { "two factor", "📲 2FA adds a second layer of protection by requiring something you know and something you have." },
+            };
         }
 
         public override void Greet()
@@ -37,14 +55,14 @@ namespace Chatbot
             }
 
             ArtDisplay.ShowAsciiTitle();
-            
         }
 
         public override void StartChat()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"👋 Welcome {Username}! I’m your Cybersecurity Awareness Bot.\n");
+            Console.WriteLine($"\n👋 Welcome {Username}! I’m your Cybersecurity Awareness Bot.");
             Console.ResetColor();
+
             while (_running)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -72,30 +90,16 @@ namespace Chatbot
 
         public void Respond(string input)
         {
-            if (input.Contains("how are you"))
+            foreach (var keyword in _responses.Keys)
             {
-                Console.WriteLine("🤖 I'm fully patched and secured, thanks for asking!");
+                if (input.Contains(keyword))
+                {
+                    Console.WriteLine(_responses[keyword]);
+                    return;
+                }
             }
-            else if (input.Contains("purpose"))
-            {
-                Console.WriteLine("🔐 I’m here to teach you cybersecurity basics and help you stay safe online.");
-            }
-            else if (input.Contains("phishing"))
-            {
-                Console.WriteLine("🎣 Phishing is a scam tricking you into giving private info. Watch for shady links!");
-            }
-            else if (input.Contains("password"))
-            {
-                Console.WriteLine("🔑 Use strong, unique passwords and enable two-factor authentication.");
-            }
-            else if (input.Contains("browsing"))
-            {
-                Console.WriteLine("🌐 Stick to HTTPS websites, avoid pop-ups, and update your browser.");
-            }
-            else
-            {
-                Console.WriteLine("🤔 I didn’t get that. Try asking about 'phishing', 'passwords', or 'browsing'.");
-            }
+
+            Console.WriteLine("🤔 I didn’t get that. Try asking about topics like 'phishing', 'VPN', or 'social engineering'. Type 'what can I ask you' for help.");
         }
     }
 }
