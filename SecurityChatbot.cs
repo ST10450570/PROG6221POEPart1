@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Media;
-using System.Threading;
 
 namespace Chatbot
 {
@@ -10,38 +9,43 @@ namespace Chatbot
         private bool _running;
         private Dictionary<string, string> _responses;
 
+        // Constructor with username and greeting audio
         public SecurityChatbot(string username, string audioPath) : base(username, audioPath)
         {
             _running = true;
             InitializeResponses();
         }
 
+        // Constructor with just audio path
         public SecurityChatbot(string audioPath) : base(audioPath)
         {
             _running = true;
             InitializeResponses();
         }
 
+        // Initializes predefined keywords and responses with cybersecurity info
         private void InitializeResponses()
         {
             _responses = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 { "how are you", "🤖 I'm fully patched and secured, thanks for asking!" },
-                { "purpose", "🔐 I'm your Cybersecurity Awareness Bot. I help you stay safe online by answering questions about cybersecurity." },
-                { "what can i ask you", "🧠 You can ask me about phishing, malware, passwords, browsing safely, firewalls, antivirus, social engineering, VPNs, and more!" },
-                { "phishing", "🎣 Phishing is when attackers trick you into revealing sensitive information. Always check URLs and never click unknown links." },
-                { "malware", "🦠 Malware is malicious software that can damage your system or steal data. Use trusted antivirus programs!" },
-                { "password", "🔑 Use long, unique passwords for each account. Consider a password manager and enable two-factor authentication." },
-                { "browsing", "🌐 Only visit HTTPS sites, block pop-ups, and clear your cache regularly." },
-                { "vpn", "🔒 A VPN hides your IP address and encrypts your data, especially useful on public Wi-Fi." },
-                { "firewall", "🧱 A firewall acts as a barrier between your computer and threats from the internet." },
-                { "social engineering", "🎭 It's when attackers manipulate people into giving up confidential information. Always verify before sharing info!" },
-                { "antivirus", "🛡️ Keep your antivirus software up-to-date to catch the latest threats." },
-                { "ransomware", "💰 Ransomware locks your files and demands payment. Backup your data regularly!" },
-                { "two factor", "📲 2FA adds a second layer of protection by requiring something you know and something you have." },
+                { "purpose", "🔐 I'm here to educate and protect you from cyber threats. Ask me anything cybersecurity!" },
+                { "what can i ask you", "🧠 Topics include: phishing, malware, ransomware, VPN, password safety, firewalls, social engineering, antivirus, and general cybersecurity tips." },
+                { "cybersecurity", "🛡️ Cybersecurity protects your systems, networks, and data from threats like hackers, viruses, and scams. Stay safe by updating devices, using strong passwords, being cautious online, and learning about threats." },
+                { "phishing", "🎣 Phishing is a scam where attackers pose as legitimate sources to steal info. Never click suspicious links or download attachments from unknown senders." },
+                { "malware", "🦠 Malware is harmful software that can steal, encrypt, or delete your data. Avoid risky downloads and use antivirus tools." },
+                { "password", "🔑 Strong, unique passwords keep accounts safe. Use password managers and turn on two-factor authentication (2FA)." },
+                { "browsing", "🌐 Safe browsing means avoiding unsecured sites, clearing cookies, and not clicking on suspicious ads or popups." },
+                { "vpn", "🔒 A VPN encrypts your connection, hides your IP, and protects your identity—especially on public Wi-Fi." },
+                { "firewall", "🧱 A firewall is like a gatekeeper for your network, blocking unauthorized access. Keep it turned on!" },
+                { "social engineering", "🎭 Social engineering is psychological manipulation. Don't trust unsolicited messages—verify before you share anything." },
+                { "antivirus", "🛡️ Antivirus software detects and removes malicious threats. Keep it updated and scan your system regularly." },
+                { "ransomware", "💰 Ransomware locks your files for a ransom. Prevent it by backing up data and not clicking unknown links." },
+                { "two factor", "📲 2FA boosts account security by requiring both a password and a code from your device." },
             };
         }
 
+        // Play greeting sound and show banners
         public override void Greet()
         {
             try
@@ -57,10 +61,11 @@ namespace Chatbot
             ArtDisplay.ShowAsciiTitle();
         }
 
+        // Main chat interaction loop
         public override void StartChat()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n👋 Welcome {Username}! I’m your Cybersecurity Awareness Bot.");
+            Console.WriteLine($"\n👋 Welcome {Username}! I'm your Cybersecurity Awareness Bot.");
             Console.ResetColor();
 
             while (_running)
@@ -88,6 +93,7 @@ namespace Chatbot
             }
         }
 
+        // Responds to user input by matching keywords
         public void Respond(string input)
         {
             foreach (var keyword in _responses.Keys)
@@ -99,7 +105,10 @@ namespace Chatbot
                 }
             }
 
-            Console.WriteLine("🤔 I didn’t get that. Try asking about topics like 'phishing', 'VPN', or 'social engineering'. Type 'what can I ask you' for help.");
+            // If no keyword matches, offer a fallback tip
+            Console.WriteLine("🤔 I'm sorry I didn't get that try typing 'what can I ask', but here’s something useful:\n");
+            Console.WriteLine("💡 **Cybersecurity Tip:** Always keep your software updated, never reuse passwords, and think before you click. Ask me about 'VPNs', 'malware', or 'phishing' to learn more.");
         }
+   
     }
 }

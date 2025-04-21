@@ -3,15 +3,14 @@ using System.Threading;
 
 namespace Chatbot
 {
+    // Responsible for showing animated ASCII art banners for UI flair
     public static class ArtDisplay
     {
         public static void ShowAsciiTitle()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
 
-            // WELCOME ASCII
-            string[] welcome = new string[]
-            {
+            string[] welcome = {
                 " __        __   _                            _          ",
                 " \\ \\      / /__| | ___ ___  _ __ ___   ___  | |_ ___    ",
                 "  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\   ",
@@ -19,9 +18,7 @@ namespace Chatbot
                 "    \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/   ",
             };
 
-            // CYBERSECURITY ASCII (provided)
-            string[] cybersecurity = new string[]
-            {
+            string[] cybersecurity = {
                 "",
                 "   _____      _                                        _ _         ",
                 "  / ____|    | |                                      (_) |        ",
@@ -30,21 +27,18 @@ namespace Chatbot
                 " | |___| |_| | |_) |  __/ |  \\__ \\  __/ (__| |_| | |  | | |_| |_| |",
                 "  \\_____|\\__, |_.__/ \\___|_|  |___/\\___|\\___|\\__,_|_|  |_|\\__|\\__, |",
                 "         __/ |                                                __/ |",
-                "        |___/                                                |___/ "
-                ,
+                "        |___/                                                |___/ ",
                 "                            A W A R E N E S S   B O T"
             };
 
-            // Draw welcome
             foreach (var line in welcome)
             {
                 Console.WriteLine(line);
                 Thread.Sleep(200);
             }
 
-            Thread.Sleep(400); // Pause between banners
+            Thread.Sleep(400);
 
-            // Draw cybersecurity banner
             foreach (var line in cybersecurity)
             {
                 Console.WriteLine(line);
