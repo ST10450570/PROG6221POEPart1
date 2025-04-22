@@ -1,5 +1,23 @@
-# PROG6221POEPart1
+﻿# PROG6221POEPart1
+Description:
+
+My chatbot is a C# console application designed to promote cybersecurity awareness among users.
+It interacts through text input and provides helpful, beginner-friendly guidance on topics like password safety,
+phishing, malware, and safe internet practices. The chatbot uses keyword recognition to respond appropriately 
+to user queries and aims to simulate real-world cybersecurity support with educational value.
  
+ structure of the code:
+
+ CyberSecurityChatbot/
+│
+├── Program.cs                → Entry point of the application
+├── ChatBot.cs                → Core chatbot logic (input handling, responses)
+├── KeywordMatcher.cs         → Class for detecting keywords from user input
+├── CyberTopics.cs            → Stores knowledge base of cybersecurity topics and responses
+├── Utilities.cs              → Optional: for input cleaning, formatting, etc.
+├── Logs/                     → (Optional) Folder for chat logs or debug info
+└── README.md                 → Project description and usage instructions
+
 Github link https://github.com/ST10450570/PROG6221POEPart1.git 
 
 references 
