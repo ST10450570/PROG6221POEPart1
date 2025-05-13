@@ -65,13 +65,13 @@ namespace Chatbot
         public override void StartChat()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n👋 Welcome {Username}! I'm your Cybersecurity Awareness Bot.");
+            Console.WriteLine($"\n👋 Hello there {Username}! I'm your Cybersecurity Awareness Bot.");
             Console.ResetColor();
 
             while (_running)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\n💬 Ask me something (type 'exit' to quit):");
+                Console.WriteLine("\n💬 Feel free to ask me something about cyberesecurity (type 'exit' to quit):");
                 Console.ResetColor();
                 Console.Write("> ");
                 string input = Console.ReadLine();
@@ -106,7 +106,7 @@ namespace Chatbot
             }
 
             // If no keyword matches, offer a fallback tip
-            Console.WriteLine("🤔 I'm sorry I didn't get that try typing 'what can I ask', but here’s something useful:\n");
+            Console.WriteLine($"🤔 I'm sorry {Username} I didn't get that try typing 'what can I ask', but here’s something useful:\n");
             Console.WriteLine("💡 **Cybersecurity Tip:** Always keep your software updated, never reuse passwords, and think before you click. Ask me about 'VPNs', 'malware', or 'phishing' to learn more.");
         }
    
