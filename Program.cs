@@ -8,7 +8,7 @@ namespace Chatbot
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            string audioPath = @"C:\Users\lab_services_student\Documents\PROG6221POEPart1\PROG6221POEPart1\greeting.wav";
+            string audioPath = @"C:\Users\chuma\OneDrive\Documents\PROG6221POEPart1\greeting.wav";
 
             // Play intro + banner
             SecurityChatbot botAudio = new SecurityChatbot(audioPath);

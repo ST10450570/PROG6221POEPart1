@@ -3,7 +3,6 @@ using System.Threading;
 
 namespace Chatbot
 {
-    // Responsible for showing animated ASCII art banners for UI flair
     public static class ArtDisplay
     {
         public static void ShowAsciiTitle()
@@ -13,7 +12,7 @@ namespace Chatbot
             string[] welcome = {
                 " __        __   _                            _          ",
                 " \\ \\      / /__| | ___ ___  _ __ ___   ___  | |_ ___    ",
-                "  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\   ",
+                "  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_  _ \\ / _ \\ | __/ _ \\   ",
                 "   \\ V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) |  ",
                 "    \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/   ",
             };

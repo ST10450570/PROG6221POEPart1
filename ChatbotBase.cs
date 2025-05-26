@@ -2,7 +2,6 @@
 
 namespace Chatbot
 {
-    // Abstract base class to enforce structure for chatbot implementations
     public abstract class ChatbotBase
     {
         protected string Username { get; set; }
